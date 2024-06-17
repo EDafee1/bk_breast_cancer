@@ -6,7 +6,7 @@ import joblib as jb
 st.set_page_config(page_title='Breast Cancer Prediction', layout='wide')
 
 st.title('Breast Cancer Prediction')
-st.header('Input your variable and select the algorithm then predict.', divider='violet')
+st.header('Input your variable and predict with Naive Bayes Algorithm.', divider='violet')
 
 margin_left, col_left, margin_mid, col_right, margin_right = st.columns([0.2,5,1,5,0.2])
 
@@ -33,13 +33,6 @@ singlecellsize = col_right.slider('Single Ephetelial Cell Size', 1, 5, 10)
 barenuclei = col_right.slider('Bare Nuclei', 1, 5, 10)
 blandchromatin = col_right.slider('Bland Chromatin', 1, 5, 10)
 normalnucleoli = col_right.slider('Normal Nucleoli', 1, 5, 10)
-
-model_var = col_left.selectbox(
-    'Select Algorithm',
-    ('Naive Bias', 'Decision Tree', 'Random Forest'),
-    index=None,
-    placeholder='Machine Learning Algorithm'
-)
 
 def predict():
     x = {
