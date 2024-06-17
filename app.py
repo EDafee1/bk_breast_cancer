@@ -36,7 +36,7 @@ def predict():
     x = pd.DataFrame(x)
 
     try:
-        model = jb.load('bk_breast_cancer\NaiveBayes.joblib')
+        model = jb.load('bk_breast_cancer\qaiveBayes.joblib')
 
         pred = model.predict(x)
         pred = pred[0]
