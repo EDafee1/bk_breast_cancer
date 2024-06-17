@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
-import matplotlib.pyplot as plt
 import joblib as jb
+from sklearn.naive_bayes import GaussianNB
 
 st.set_page_config(page_title='Breast Cancer Prediction', layout='wide')
 
@@ -9,18 +9,6 @@ st.title('Breast Cancer Prediction')
 st.header('Input your variable and predict with Naive Bayes Algorithm.', divider='violet')
 
 margin_left, col_left, margin_mid, col_right, margin_right = st.columns([0.2,5,1,5,0.2])
-
-def get_NB():
-    nb = jb.load(f'.\\NB.pkl')
-    return nb
-
-def get_DT():
-    dt = jb.load(f'.\\DT.pkl')
-    return dt
-
-def get_RF():
-    rf = jb.load(f'.\\RF.pkl')
-    return rf
 
 if 'result' not in st.session_state:
     st.session_state.result = 'Fill the column and click Predict Button.'
@@ -54,15 +42,15 @@ def predict():
         pred = pred[0]
 
         if pred == 2:
-            st.session_state.result = 'Save'
+            st.session_state.result = 'You are save from cancer'
         elif pred == 4:
-            st.session_state.result = 'Cancer'
+            st.session_state.result = 'YOU HAVE CANCER!'
         else:
             st.session_state.result = 'Something Wrong'
 
     except:
         st.session_state.result = 'Something Wrong.'
 
-col_right.button('Predict', on_click=predict)
+col_left.button('Predict', on_click=predict)
 
-col_right.write(st.session_state.result)
+col_left.write(st.session_state.result)
