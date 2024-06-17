@@ -36,7 +36,7 @@ def predict():
     x = pd.DataFrame(x)
 
     try:
-        model = jb.load(f'.\\NB.pkl')
+        model = jb.load(f'bk_breast_cancer\NB.pkl')
 
         pred = model.predict(x)
         pred = pred[0]
