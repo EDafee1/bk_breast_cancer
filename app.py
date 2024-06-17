@@ -48,8 +48,8 @@ def predict():
         else:
             st.session_state.result = 'Something Wrong'
 
-    except:
-        st.session_state.result = 'Something Wrong.'
+    except Exception as e:
+        st.session_state.result = str(e)
 
 col_left.button('Predict', on_click=predict)
 
